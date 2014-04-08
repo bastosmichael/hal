@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update_plan
     @user = current_user
-
+    
     role_id = params[:user][:role_ids] unless params[:user].nil? || params[:user][:role_ids].nil?
     role = Role.find_by_id role_id unless role_id.nil?
 

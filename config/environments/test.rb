@@ -37,6 +37,7 @@ RailsStripeMembershipSaas::Application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'example.com' }
+
 end
 
 # For Travis testing only...
