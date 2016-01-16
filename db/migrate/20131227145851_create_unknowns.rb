@@ -9,12 +9,10 @@ class CreateUnknowns < ActiveRecord::Migration
       t.string :url
       t.string :image
       t.string :type
-      t.hstore :fields
 
       t.timestamps
     end
 
   add_index 'unknowns', ["listing_id", "url"], :unique => true
-  add_hstore_index :unknowns, :fields
   end
 end

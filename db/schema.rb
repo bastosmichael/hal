@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226210142) do
+ActiveRecord::Schema.define(:version => 20131227145851) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -44,6 +44,72 @@ ActiveRecord::Schema.define(:version => 20131226210142) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "items", :force => true do |t|
+    t.string   "item_id",         :limit => 32
+    t.integer  "organization_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "url"
+    t.string   "image"
+    t.string   "type"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "items", ["item_id", "url"], :name => "index_items_on_item_id_and_url", :unique => true
+
+  create_table "items_taxonomies", :id => false, :force => true do |t|
+    t.integer  "item_id",     :null => false
+    t.integer  "taxonomy_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items_taxonomies", ["item_id", "taxonomy_id"], :name => "index_items_taxonomies_on_item_id_and_taxonomy_id", :unique => true
+
+  create_table "listings", :force => true do |t|
+    t.string   "listing_id",      :limit => 32, :null => false
+    t.integer  "organization_id"
+    t.integer  "item_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "url"
+    t.string   "image"
+    t.string   "type"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "listings", ["listing_id", "url"], :name => "index_listings_on_listing_id_and_url", :unique => true
+
+  create_table "listings_taxonomies", :id => false, :force => true do |t|
+    t.integer  "listing_id",  :null => false
+    t.integer  "taxonomy_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings_taxonomies", ["listing_id", "taxonomy_id"], :name => "index_listings_taxonomies_on_listing_id_and_taxonomy_id", :unique => true
+
+  create_table "organization_connections", :id => false, :force => true do |t|
+    t.integer  "org_a_id",   :null => false
+    t.integer  "org_b_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organization_connections", ["org_a_id", "org_b_id"], :name => "index_organization_connections_on_org_a_id_and_org_b_id", :unique => true
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.string   "url"
+    t.string   "image"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -65,6 +131,21 @@ ActiveRecord::Schema.define(:version => 20131226210142) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "unknowns", :force => true do |t|
+    t.string   "listing_id",      :limit => 32, :null => false
+    t.integer  "organization_id"
+    t.integer  "item_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "url"
+    t.string   "image"
+    t.string   "type"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "unknowns", ["listing_id", "url"], :name => "index_unknowns_on_listing_id_and_url", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
