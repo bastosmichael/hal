@@ -22,10 +22,6 @@ GEM
       activesupport (= 3.2.16)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-postgres-hstore (0.7.7)
-      activerecord (>= 3.1)
-      pg-hstore (>= 1.1.5)
-      rake
     activeresource (3.2.16)
       activemodel (= 3.2.16)
       activesupport (= 3.2.16)
@@ -180,7 +176,6 @@ GEM
     party_foul (1.5.1)
       octokit (~> 2.5.0)
     pg (0.17.1)
-    pg-hstore (1.2.0)
     phantomjs (1.9.2.1)
     polyglot (0.3.3)
     powerpack (0.0.9)
@@ -353,7 +348,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgres-hstore
   acts_as_follower (= 0.1.1)
   awesome_print
   aws-ses
@@ -405,3 +399,6 @@ DEPENDENCIES
   uglifier
   unicorn
   will_paginate-bootstrap
+
+BUNDLED WITH
+   1.11.2

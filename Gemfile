@@ -67,5 +67,5 @@ group :production do
   gem 'unicorn'
   gem 'pg'
   # gem 'pg_search'
-  gem "activerecord-postgres-hstore"
+  # gem "activerecord-postgres-hstore"
 end

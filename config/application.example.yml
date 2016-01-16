@@ -10,6 +10,7 @@
 NAME: Rails Stripe Membership Saas
 SLOGAN: Welcome to Ruby Software As A Service
 DESC: Follow your favorite Items
+TYPE: Item
 ABOUT_PAGE: Url for an About Page
 CONTACT_PAGE: Url for a Contact Page
 FEATURES: []

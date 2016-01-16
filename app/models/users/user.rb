@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  # serialize :fields, ActiveRecord::Coders::Hstore if Rails.env = 'production'
+  # unique: :until_executed if Rails.env = 'production'
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name,
                   :last_name,
